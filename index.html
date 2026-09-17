@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>MetWood | Metin2</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0c0b09;
+            color: #e8dfc9;
+            font-family: Georgia, serif;
+        }
+
+        nav {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            border-bottom: 1px solid #5c4a2e;
+            background: #11100d;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            color: #c7a45b;
+        }
+
+        nav a {
+            color: #ddd1b7;
+            text-decoration: none;
+            margin-left: 35px;
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        nav a:hover {
+            color: #c7a45b;
+        }
+
+        .hero {
+            min-height: calc(100vh - 90px);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.35),
+                    rgba(0,0,0,.85)
+                ),
+                radial-gradient(
+                    circle,
+                    #40351f 0%,
+                    #15120d 45%,
+                    #080807 100%
+                );
+        }
+
+        .hero h1 {
+            font-size: 90px;
+            letter-spacing: 12px;
+            color: #d4b36c;
+
+            text-shadow:
+                0 3px 0 #493719,
+                0 0 30px rgba(210,170,90,.25);
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 19px;
+            letter-spacing: 5px;
+            color: #b9ad94;
+        }
+
+        .play {
+            margin-top: 45px;
+            padding: 17px 45px;
+
+            border: 1px solid #a88748;
+            background: rgba(25,20,13,.8);
+
+            color: #e2c889;
+            text-decoration: none;
+
+            letter-spacing: 3px;
+            transition: .3s;
+        }
+
+        .play:hover {
+            background: #a88748;
+            color: #111;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        METWOOD
+    </div>
+
+    <div>
+        <a href="#">DOMŮ</a>
+        <a href="#">NOVINKY</a>
+        <a href="#">O SERVERU</a>
+        <a href="#">WIKI</a>
+        <a href="#">ŽEBŘÍČEK</a>
+        <a href="#">DISCORD</a>
+    </div>
+
+</nav>
+
+
+<section class="hero">
+
+    <h1>METWOOD</h1>
+
+    <p>
+        VSTUP DO NOVÉHO SVĚTA
+    </p>
+
+    <a class="play" href="#">
+        HRÁT NYNÍ
+    </a>
+
+</section>
+
+</body>
+</html>
