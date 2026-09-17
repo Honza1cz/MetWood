@@ -1,1 +1,1319 @@
+/* =========================
+   METWOOD - HLAVNÍ STYL
+========================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --gold: #c9a65a;
+    --gold-light: #ead59a;
+    --gold-dark: #74582b;
+
+    --text: #eee6d3;
+    --muted: #aaa18e;
+
+    --dark: #090a09;
+    --panel: rgba(10, 11, 10, 0.82);
+    --panel-light: rgba(25, 24, 20, 0.88);
+
+    --border: rgba(201, 166, 90, 0.45);
+}
+
+
+/* =========================
+   ZÁKLAD
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: #090a09;
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+}
+
+
+/* =========================
+   POZADÍ
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.03);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5, 6, 5, 0.30),
+            rgba(5, 6, 5, 0.10) 45%,
+            rgba(5, 6, 5, 0.75)
+        ),
+        radial-gradient(
+            circle at center,
+            transparent 15%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    width: min(1500px, calc(100% - 70px));
+    height: 82px;
+
+    padding: 0 18px 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(28, 27, 23, 0.94),
+            rgba(11, 12, 11, 0.94)
+        );
+
+    border: 1px solid var(--border);
+    border-top: 2px solid rgba(234, 213, 154, 0.65);
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.55),
+        inset 0 1px rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(15px);
+}
+
+.navbar::before {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+    bottom: 5px;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold-dark),
+        transparent
+    );
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    position: relative;
+
+    border: none;
+    background: none;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+    font-size: 24px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.logo::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold);
+
+    transition: width 0.3s;
+}
+
+.logo:hover {
+    color: white;
+
+    text-shadow:
+        0 0 15px rgba(234, 213, 154, 0.5);
+}
+
+.logo:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   NAVIGACE
+========================= */
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+
+    gap: 70px;
+}
+
+.nav-button {
+    border: none;
+    background: none;
+
+    color: #d4cbb8;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.navbar nav .nav-button {
+    position: relative;
+}
+
+.navbar nav .nav-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold);
+
+    transition: width 0.25s;
+}
+
+.nav-button:hover {
+    color: var(--gold-light);
+}
+
+.navbar nav .nav-button:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   PANEL BUTTON
+========================= */
+
+.panel-button {
+    min-width: 150px;
+
+    padding: 14px 30px;
+
+    border: 1px solid var(--gold-dark);
+
+    background:
+        linear-gradient(
+            180deg,
+            #171713,
+            #090a09
+        );
+
+    color: var(--gold-light);
+
+    box-shadow:
+        inset 0 0 15px rgba(201, 166, 90, 0.06);
+
+    transition: 0.3s;
+}
+
+.panel-button:hover {
+    background: var(--gold);
+
+    color: #080808;
+
+    border-color: var(--gold-light);
+
+    box-shadow:
+        0 0 25px rgba(201, 166, 90, 0.25);
+}
+
+
+/* =========================
+   STRÁNKY
+========================= */
+
+main {
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+
+    min-height: 100vh;
+
+    padding:
+        155px
+        7%
+        100px;
+}
+
+.page.active {
+    display: block;
+
+    animation: pageAppear 0.55s ease;
+}
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+#home {
+    position: relative;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: absolute;
+
+    top: 48%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.hero-small {
+    margin-bottom: 10px;
+
+    color: #c8b991;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 9px;
+}
+
+.hero h1 {
+    color: #f0dfad;
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(60px, 7vw, 115px);
+    font-weight: 700;
+
+    letter-spacing: 13px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 4px 5px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(201, 166, 90, 0.12);
+}
+
+.hero-line {
+    width: 240px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+.hero h2 {
+    color: #ddd1b7;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+    font-weight: 400;
+
+    letter-spacing: 8px;
+
+    text-shadow:
+        0 3px 10px #000;
+}
+
+
+/* =========================
+   SERVER + DISCORD KARTY
+========================= */
+
+.server-card,
+.discord-card {
+    position: absolute;
+
+    bottom: 65px;
+
+    width: 290px;
+    min-height: 195px;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21, 21, 18, 0.92),
+            rgba(7, 8, 7, 0.92)
+        );
+
+    border: 1px solid rgba(201, 166, 90, 0.32);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(10px);
+}
+
+.server-card {
+    left: 7%;
+}
+
+.discord-card {
+    right: 7%;
+}
+
+.server-card::before,
+.discord-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 75px;
+    height: 2px;
+
+    background: var(--gold);
+}
+
+.card-label {
+    color: var(--gold);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+.server-card h3,
+.discord-card h3 {
+    margin-top: 8px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 25px;
+
+    letter-spacing: 2px;
+}
+
+.discord-card p {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ONLINE
+========================= */
+
+.online {
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #8fc58d;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+.online-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #73b96f;
+
+    box-shadow:
+        0 0 10px rgba(115, 185, 111, 0.8);
+}
+
+.server-card strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   BUTTONY
+========================= */
+
+.disabled-button,
+.discord-button,
+.product-bottom button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 18px;
+
+    min-height: 42px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--gold-dark);
+
+    background: rgba(9, 9, 8, 0.8);
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.disabled-button {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+.discord-button:hover,
+.product-bottom button:hover {
+    background: var(--gold);
+
+    color: #080808;
+
+    border-color: var(--gold-light);
+}
+
+
+/* =========================
+   CONTENT WINDOW
+========================= */
+
+.content-window {
+    width: min(1100px, 100%);
+
+    margin: 45px auto;
+
+    padding: 55px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 17, 15, 0.96),
+            rgba(7, 8, 7, 0.96)
+        );
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(18px);
+}
+
+.section-small {
+    color: var(--gold);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+}
+
+.content-window > h2 {
+    margin-top: 8px;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 43px;
+
+    letter-spacing: 5px;
+}
+
+.section-description {
+    margin-top: 10px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   OBCHOD
+========================= */
+
+.products {
+    margin-top: 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
+}
+
+.product-card {
+    overflow: hidden;
+
+    background: #10100e;
+
+    border: 1px solid rgba(201, 166, 90, 0.28);
+
+    transition:
+        transform 0.3s,
+        border-color 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--gold);
+}
+
+.product-image {
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle,
+            #554524,
+            #17140e 60%,
+            #080808
+        );
+}
+
+.product-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -20px;
+
+    background:
+        url("images/background.jpg")
+        center / cover;
+
+    filter:
+        blur(12px)
+        brightness(0.35);
+
+    transform: scale(1.2);
+}
+
+.product-image span {
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 60px;
+    font-weight: 700;
+
+    text-shadow:
+        0 5px 20px #000;
+}
+
+.product-content {
+    padding: 25px;
+}
+
+.product-type {
+    color: var(--gold);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+.product-content h3 {
+    margin-top: 7px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 24px;
+}
+
+.product-content p {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.product-bottom {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-bottom strong {
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status-box {
+    margin-top: 40px;
+
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(201, 166, 90, 0.22);
+}
+
+.status-box > div:first-child {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+}
+
+.status-online {
+    color: #80c47d;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.player-count {
+    margin-top: 30px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border: 1px solid rgba(201, 166, 90, 0.15);
+
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.player-count span {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+.player-count strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 75px;
+
+    line-height: 1;
+}
+
+.player-count p {
+    margin-top: 7px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   TÝM
+========================= */
+
+.team-grid {
+    margin-top: 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 25px;
+}
+
+.team-member {
+    padding: 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(201, 166, 90, 0.2);
+
+    transition: 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--gold);
+}
+
+.avatar {
+    width: 85px;
+    height: 85px;
+
+    margin: auto auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 50%;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 31px;
+
+    background:
+        radial-gradient(
+            circle,
+            #3b321f,
+            #11110f
+        );
+
+    box-shadow:
+        0 0 30px rgba(201, 166, 90, 0.12);
+}
+
+.team-member span {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.team-member h3 {
+    margin-top: 7px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   PANEL
+========================= */
+
+.coming-soon {
+    margin-top: 50px;
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    border:
+        1px dashed
+        rgba(201, 166, 90, 0.3);
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================
+   CHRISTMAS
+========================= */
+
+.christmas-window {
+    border-color:
+        rgba(185, 70, 55, 0.65);
+}
+
+.christmas-product {
+    border-color:
+        rgba(185, 70, 55, 0.4);
+}
+
+.santa-image {
+    position: relative;
+
+    z-index: 1;
+
+    font-size: 70px;
+}
+
+
+/* =========================
+   CHRISTMAS MEČ
+========================= */
+
+.christmas-sword {
+    position: fixed;
+
+    z-index: 150;
+
+    top: 125px;
+    right: -235px;
+
+    width: 330px;
+    height: 120px;
+
+    border: none;
+    background: none;
+
+    cursor: pointer;
+
+    transition:
+        right 0.55s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.christmas-sword:hover {
+    right: -20px;
+}
+
+
+/* CELÝ MEČ */
+
+.sword {
+    position: absolute;
+
+    top: 48px;
+    left: 0;
+
+    width: 300px;
+    height: 25px;
+}
+
+
+/* ČEPEL */
+
+.sword-blade {
+    position: absolute;
+
+    left: 0;
+    top: 7px;
+
+    width: 225px;
+    height: 12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eeeeea,
+            #777a78 50%,
+            #d5d6d1
+        );
+
+    clip-path:
+        polygon(
+            0 50%,
+            18px 0,
+            100% 0,
+            100% 100%,
+            18px 100%
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,0.15);
+}
+
+
+/* ZÁŠTITA */
+
+.sword-guard {
+    position: absolute;
+
+    left: 220px;
+    top: -4px;
+
+    width: 12px;
+    height: 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6e5225,
+            #d3ad5c,
+            #6e5225
+        );
+}
+
+
+/* RUKOJEŤ */
+
+.sword-handle {
+    position: absolute;
+
+    left: 230px;
+    top: 4px;
+
+    width: 52px;
+    height: 19px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #4b2419 0,
+            #4b2419 5px,
+            #25120d 5px,
+            #25120d 10px
+        );
+
+    border:
+        1px solid
+        #9b773b;
+}
+
+
+/* HLAVICE */
+
+.sword-pommel {
+    position: absolute;
+
+    left: 279px;
+    top: 2px;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #d0a754,
+            #59431f
+        );
+}
+
+
+/* CHRISTMAS VISAČKA */
+
+.sale-tag {
+    position: absolute;
+
+    right: 15px;
+    top: 77px;
+
+    width: 105px;
+
+    padding: 9px 8px;
+
+    background: #812b25;
+
+    border:
+        1px solid
+        #d6ad6c;
+
+    color: #f4e6c3;
+
+    font-family: "Cinzel", serif;
+
+    transform-origin: top center;
+
+    animation:
+        tagSwing
+        3s
+        ease-in-out
+        infinite;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.4);
+}
+
+.sale-tag::before {
+    content: "";
+
+    position: absolute;
+
+    top: -17px;
+    left: 50%;
+
+    width: 1px;
+    height: 17px;
+
+    background: #b49764;
+}
+
+.sale-tag span {
+    display: block;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+.sale-tag strong {
+    display: block;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+}
+
+@keyframes tagSwing {
+
+    0%,
+    100% {
+        transform: rotate(-4deg);
+    }
+
+    50% {
+        transform: rotate(4deg);
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: fixed;
+
+    z-index: 20;
+
+    bottom: 12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color:
+        rgba(255, 255, 255, 0.32);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   MOBIL / MENŠÍ MONITOR
+========================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        width: calc(100% - 25px);
+
+        top: 12px;
+
+        padding: 0 15px;
+
+        height: 70px;
+    }
+
+    .navbar nav {
+        gap: 15px;
+    }
+
+    .navbar nav .nav-button {
+        font-size: 10px;
+
+        letter-spacing: 1px;
+    }
+
+    .logo {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .panel-button {
+        min-width: auto;
+
+        padding: 11px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+
+        letter-spacing: 5px;
+    }
+
+    .hero h2 {
+        font-size: 12px;
+
+        letter-spacing: 3px;
+    }
+
+    .server-card,
+    .discord-card {
+        position: relative;
+
+        left: auto;
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+    #home {
+        padding-top: 500px;
+    }
+
+    .content-window {
+        padding: 30px 20px;
+    }
+
+    .content-window > h2 {
+        font-size: 30px;
+    }
+
+}
