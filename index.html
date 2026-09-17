@@ -6,142 +6,437 @@
 
     <title>MetWood | Metin2</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0c0b09;
-            color: #e8dfc9;
-            font-family: Georgia, serif;
-        }
-
-        nav {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            border-bottom: 1px solid #5c4a2e;
-            background: #11100d;
-        }
-
-        .logo {
-            font-size: 30px;
-            font-weight: bold;
-            letter-spacing: 4px;
-            color: #c7a45b;
-        }
-
-        nav a {
-            color: #ddd1b7;
-            text-decoration: none;
-            margin-left: 35px;
-            font-size: 15px;
-            letter-spacing: 2px;
-        }
-
-        nav a:hover {
-            color: #c7a45b;
-        }
-
-        .hero {
-            min-height: calc(100vh - 90px);
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,.35),
-                    rgba(0,0,0,.85)
-                ),
-                radial-gradient(
-                    circle,
-                    #40351f 0%,
-                    #15120d 45%,
-                    #080807 100%
-                );
-        }
-
-        .hero h1 {
-            font-size: 90px;
-            letter-spacing: 12px;
-            color: #d4b36c;
-
-            text-shadow:
-                0 3px 0 #493719,
-                0 0 30px rgba(210,170,90,.25);
-        }
-
-        .hero p {
-            margin-top: 15px;
-            font-size: 19px;
-            letter-spacing: 5px;
-            color: #b9ad94;
-        }
-
-        .play {
-            margin-top: 45px;
-            padding: 17px 45px;
-
-            border: 1px solid #a88748;
-            background: rgba(25,20,13,.8);
-
-            color: #e2c889;
-            text-decoration: none;
-
-            letter-spacing: 3px;
-            transition: .3s;
-        }
-
-        .play:hover {
-            background: #a88748;
-            color: #111;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
-
-    <div class="logo">
-        METWOOD
-    </div>
-
-    <div>
-        <a href="#">DOMŮ</a>
-        <a href="#">NOVINKY</a>
-        <a href="#">O SERVERU</a>
-        <a href="#">WIKI</a>
-        <a href="#">ŽEBŘÍČEK</a>
-        <a href="#">DISCORD</a>
-    </div>
-
-</nav>
+    <!-- POZADÍ -->
+    <div class="background"></div>
+    <div class="overlay"></div>
 
 
-<section class="hero">
+    <!-- =========================
+         HORNÍ NAVIGACE
+    ========================== -->
+    <header class="navbar">
 
-    <h1>METWOOD</h1>
+        <button class="logo nav-button" data-page="home">
+            METWOOD
+        </button>
 
-    <p>
-        VSTUP DO NOVÉHO SVĚTA
-    </p>
+        <nav>
+            <button class="nav-button" data-page="shop">
+                OBCHOD
+            </button>
 
-    <a class="play" href="#">
-        HRÁT NYNÍ
-    </a>
+            <button class="nav-button" data-page="status">
+                STATUS
+            </button>
 
-</section>
+            <button class="nav-button" data-page="team">
+                TÝM
+            </button>
+        </nav>
+
+        <button class="panel-button nav-button" data-page="panel">
+            PANEL
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         HLAVNÍ STRÁNKA
+    ========================== -->
+    <main>
+
+        <section id="home" class="page active">
+
+            <div class="hero">
+
+                <p class="hero-small">
+                    VÍTEJ VE SVĚTĚ
+                </p>
+
+                <h1>
+                    METWOOD
+                </h1>
+
+                <div class="hero-line"></div>
+
+                <h2>
+                    ZA HRANICÍ METINU
+                </h2>
+
+            </div>
+
+
+            <!-- SERVER -->
+            <div class="server-card">
+
+                <span class="card-label">
+                    SERVER
+                </span>
+
+                <h3>
+                    MetWood
+                </h3>
+
+                <div class="online">
+                    <span class="online-dot"></span>
+                    ONLINE
+                </div>
+
+                <strong>
+                    67 hráčů
+                </strong>
+
+                <button class="disabled-button">
+                    NAPOJIT SE
+                </button>
+
+            </div>
+
+
+            <!-- DISCORD -->
+            <div class="discord-card">
+
+                <span class="card-label">
+                    KOMUNITA
+                </span>
+
+                <h3>
+                    Discord
+                </h3>
+
+                <p>
+                    Připoj se k naší komunitě
+                </p>
+
+                <a
+                    href="https://discord.gg/ZNnY5skKW9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="discord-button"
+                >
+                    NAPOJIT SE
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OBCHOD
+        ========================== -->
+
+        <section id="shop" class="page">
+
+            <div class="content-window">
+
+                <span class="section-small">
+                    METWOOD
+                </span>
+
+                <h2>
+                    OBCHOD
+                </h2>
+
+                <p class="section-description">
+                    Podpoř server a získej herní mince.
+                </p>
+
+
+                <div class="products">
+
+                    <article class="product-card">
+
+                        <div class="product-image coins-image">
+                            <span>MW</span>
+                        </div>
+
+                        <div class="product-content">
+
+                            <span class="product-type">
+                                HERNÍ MĚNA
+                            </span>
+
+                            <h3>
+                                1 000 mincí
+                            </h3>
+
+                            <p>
+                                Balíček mincí pro MetWood.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <strong>
+                                    100 Kč
+                                </strong>
+
+                                <button>
+                                    KOUPIT
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATUS
+        ========================== -->
+
+        <section id="status" class="page">
+
+            <div class="content-window">
+
+                <span class="section-small">
+                    STAV SVĚTA
+                </span>
+
+                <h2>
+                    STATUS SERVERU
+                </h2>
+
+
+                <div class="status-box">
+
+                    <div>
+
+                        <span class="online-dot"></span>
+
+                        <span>
+                            MetWood
+                        </span>
+
+                    </div>
+
+                    <div class="status-online">
+                        ONLINE
+                    </div>
+
+                </div>
+
+
+                <div class="player-count">
+
+                    <span>
+                        PRÁVĚ HRAJE
+                    </span>
+
+                    <strong>
+                        67
+                    </strong>
+
+                    <p>
+                        hráčů
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TÝM
+        ========================== -->
+
+        <section id="team" class="page">
+
+            <div class="content-window">
+
+                <span class="section-small">
+                    LIDÉ ZA METWOOD
+                </span>
+
+                <h2>
+                    NÁŠ TÝM
+                </h2>
+
+
+                <div class="team-grid">
+
+                    <article class="team-member">
+
+                        <div class="avatar">
+                            H
+                        </div>
+
+                        <span>
+                            OWNER
+                        </span>
+
+                        <h3>
+                            Honza
+                        </h3>
+
+                    </article>
+
+
+                    <article class="team-member">
+
+                        <div class="avatar">
+                            E
+                        </div>
+
+                        <span>
+                            MANAGEMENT
+                        </span>
+
+                        <h3>
+                            Emerold
+                        </h3>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PANEL
+        ========================== -->
+
+        <section id="panel" class="page">
+
+            <div class="content-window">
+
+                <span class="section-small">
+                    METWOOD
+                </span>
+
+                <h2>
+                    HERNÍ PANEL
+                </h2>
+
+                <p class="coming-soon">
+                    PANEL BUDE BRZY DOSTUPNÝ
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CHRISTMAS SHOP
+        ========================== -->
+
+        <section id="christmas" class="page">
+
+            <div class="content-window christmas-window">
+
+                <span class="section-small">
+                    LIMITOVANÁ NABÍDKA
+                </span>
+
+                <h2>
+                    CHRISTMAS SALE
+                </h2>
+
+                <p class="section-description">
+                    Speciální vánoční nabídka MetWood.
+                </p>
+
+
+                <div class="products">
+
+                    <article class="product-card christmas-product">
+
+                        <div class="product-image santa-image">
+                            🎄
+                        </div>
+
+                        <div class="product-content">
+
+                            <span class="product-type">
+                                CHRISTMAS LIMITED
+                            </span>
+
+                            <h3>
+                                Vůz Santy
+                            </h3>
+
+                            <p>
+                                Limitovaný vánoční předmět.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <strong>
+                                    500 Kč
+                                </strong>
+
+                                <button>
+                                    KOUPIT
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         CHRISTMAS MEČ
+    ========================== -->
+
+    <button id="christmasSword" class="christmas-sword">
+
+        <div class="sword">
+
+            <div class="sword-blade"></div>
+
+            <div class="sword-guard"></div>
+
+            <div class="sword-handle"></div>
+
+            <div class="sword-pommel"></div>
+
+        </div>
+
+        <div class="sale-tag">
+            <span>CHRISTMAS</span>
+            <strong>SALE</strong>
+        </div>
+
+    </button>
+
+
+    <!-- SPODNÍ TEXT -->
+
+    <footer>
+        METWOOD © 2026
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
