@@ -1241,55 +1241,267 @@ footer {
 }
 
 
-/* =========================
-   MOBIL / MENŠÍ MONITOR
-========================= */
+/* ==========================================
+   TABLET / MENŠÍ NOTEBOOK
+========================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 
     .navbar {
-        width: calc(100% - 25px);
-
-        top: 12px;
-
-        padding: 0 15px;
-
-        height: 70px;
+        width: calc(100% - 30px);
+        top: 15px;
+        height: 75px;
+        padding: 0 20px;
     }
 
     .navbar nav {
-        gap: 15px;
+        gap: 30px;
+    }
+
+    .nav-button {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .logo {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+
+    .panel-button {
+        min-width: 110px;
+        padding: 12px 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 9vw, 90px);
+    }
+
+}
+
+
+/* ==========================================
+   MOBIL
+========================================== */
+
+@media (max-width: 700px) {
+
+    /* -------------------------
+       ZÁKLAD
+    ------------------------- */
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .background {
+        background-position: center center;
+        transform: scale(1.05);
+    }
+
+    .overlay {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(5, 6, 5, 0.35),
+                rgba(5, 6, 5, 0.25) 45%,
+                rgba(5, 6, 5, 0.9)
+            ),
+            radial-gradient(
+                circle at center,
+                transparent,
+                rgba(0, 0, 0, 0.55)
+            );
+    }
+
+
+    /* -------------------------
+       HORNÍ MENU
+    ------------------------- */
+
+    .navbar {
+        position: fixed;
+
+        top: 10px;
+        left: 10px;
+
+        transform: none;
+
+        width: calc(100% - 20px);
+        height: auto;
+        min-height: 65px;
+
+        padding: 14px;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr auto;
+
+        gap: 10px;
+
+        background:
+            rgba(10, 11, 10, 0.95);
+    }
+
+
+    /* METWOOD LOGO */
+
+    .logo {
+        justify-self: start;
+
+        font-size: 17px;
+
+        letter-spacing: 3px;
+    }
+
+
+    /* MENU */
+
+    .navbar nav {
+        grid-column: 1 / -1;
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 5px;
+
+        order: 3;
+
+        padding-top: 10px;
+
+        border-top:
+            1px solid
+            rgba(201, 166, 90, 0.2);
     }
 
     .navbar nav .nav-button {
-        font-size: 10px;
+        min-height: 40px;
+
+        padding: 5px;
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+
+        border:
+            1px solid
+            rgba(201, 166, 90, 0.15);
+    }
+
+    .navbar nav .nav-button::after {
+        display: none;
+    }
+
+
+    /* PANEL */
+
+    .panel-button {
+        justify-self: end;
+
+        min-width: auto;
+
+        padding: 10px 15px;
+
+        font-size: 9px;
 
         letter-spacing: 1px;
     }
 
-    .logo {
-        font-size: 16px;
 
-        letter-spacing: 2px;
+    /* -------------------------
+       STRÁNKY
+    ------------------------- */
+
+    .page {
+        min-height: 100svh;
+
+        padding:
+            155px
+            15px
+            80px;
     }
 
-    .panel-button {
-        min-width: auto;
 
-        padding: 11px;
+    /* -------------------------
+       HOME
+    ------------------------- */
+
+    #home {
+        min-height: 100svh;
+
+        padding-top: 155px;
+
+        display: none;
+    }
+
+    #home.active {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+
+    .hero {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        margin-top: 70px;
+        margin-bottom: 70px;
+
+        padding: 0 10px;
+    }
+
+    .hero-small {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 12px;
     }
 
     .hero h1 {
-        font-size: 48px;
+        font-size: clamp(40px, 13vw, 65px);
 
-        letter-spacing: 5px;
+        letter-spacing: 4px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .hero-line {
+        width: 140px;
+
+        margin: 18px auto;
     }
 
     .hero h2 {
-        font-size: 12px;
+        font-size: 11px;
 
         letter-spacing: 3px;
+
+        line-height: 1.7;
     }
+
+
+    /* -------------------------
+       SERVER + DISCORD
+    ------------------------- */
 
     .server-card,
     .discord-card {
@@ -1300,20 +1512,232 @@ footer {
         bottom: auto;
 
         width: 100%;
+        min-height: auto;
 
-        margin-top: 20px;
+        margin-bottom: 15px;
+
+        padding: 22px;
     }
 
-    #home {
-        padding-top: 500px;
+    .server-card h3,
+    .discord-card h3 {
+        font-size: 21px;
     }
+
+
+    /* -------------------------
+       CONTENT WINDOW
+    ------------------------- */
 
     .content-window {
-        padding: 30px 20px;
+        width: 100%;
+
+        margin: 15px auto;
+
+        padding: 28px 18px;
     }
 
     .content-window > h2 {
-        font-size: 30px;
+        font-size: 27px;
+
+        letter-spacing: 2px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .section-small {
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+
+    .section-description {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    /* -------------------------
+       OBCHOD
+    ------------------------- */
+
+    .products {
+        margin-top: 30px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .product-content h3 {
+        font-size: 21px;
+    }
+
+    .product-bottom {
+        gap: 15px;
+    }
+
+    .product-bottom strong {
+        font-size: 19px;
+    }
+
+
+    /* -------------------------
+       STATUS
+    ------------------------- */
+
+    .status-box {
+        padding: 18px;
+
+        gap: 15px;
+    }
+
+    .status-box > div:first-child {
+        font-size: 15px;
+    }
+
+    .player-count {
+        padding: 30px 15px;
+    }
+
+    .player-count strong {
+        font-size: 60px;
+    }
+
+
+    /* -------------------------
+       TÝM
+    ------------------------- */
+
+    .team-grid {
+        grid-template-columns: 1fr;
+
+        margin-top: 30px;
+    }
+
+    .team-member {
+        padding: 25px;
+    }
+
+
+    /* -------------------------
+       PANEL
+    ------------------------- */
+
+    .coming-soon {
+        margin-top: 30px;
+
+        padding: 30px 15px;
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.8;
+    }
+
+
+    /* -------------------------
+       CHRISTMAS MEČ
+    ------------------------- */
+
+    .christmas-sword {
+        top: auto;
+
+        bottom: 35px;
+
+        right: -250px;
+
+        transform: scale(0.72);
+
+        transform-origin: right center;
+    }
+
+    .christmas-sword:hover {
+        right: -80px;
+    }
+
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
+    footer {
+        position: relative;
+
+        bottom: auto;
+        left: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        padding: 15px;
+
+        text-align: center;
+
+        font-size: 8px;
+    }
+
+}
+
+
+/* ==========================================
+   MALÉ MOBILY
+========================================== */
+
+@media (max-width: 420px) {
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+    .panel-button {
+        padding: 9px 11px;
+    }
+
+    .navbar nav .nav-button {
+        font-size: 8px;
+    }
+
+    .hero {
+        margin-top: 55px;
+        margin-bottom: 55px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero h2 {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .content-window > h2 {
+        font-size: 23px;
+    }
+
+    .product-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
     }
 
 }
