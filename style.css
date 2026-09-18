@@ -2181,3 +2181,55 @@ a {
 .footer-link:hover {
     color: #d4af61;
 }
+
+/* =========================================================
+   FOOTER - FINÁLNÍ VZHLED ODKAZŮ
+   ========================================================= */
+
+/* Pouze hlavní nadpisy */
+.footer-links h4 {
+    color: #c9a65a !important;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* VŠECHNY odkazy pod nadpisy */
+.footer-links a,
+.footer-links button,
+.footer-links .footer-link,
+.footer-links .nav-button {
+    color: #9d9d94 !important;
+
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+
+    margin-bottom: 12px;
+
+    background: transparent !important;
+    border: none !important;
+
+    padding: 0 !important;
+
+    text-align: left;
+
+    box-shadow: none !important;
+}
+
+/* Hover */
+.footer-links a:hover,
+.footer-links button:hover,
+.footer-links .footer-link:hover,
+.footer-links .nav-button:hover {
+    color: #c9a65a !important;
+}
+
+/* odstranění čáry z navigačních buttonů */
+.footer-links .nav-button::after {
+    display: none !important;
+}
