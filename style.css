@@ -3027,3 +3027,176 @@ a {
     }
 
 }
+
+/* =====================================================
+   METWOOD - NÁBOR
+===================================================== */
+
+.recruitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 45px;
+}
+
+
+/* KARTA */
+
+.recruitment-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 310px;
+    padding: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 23, 19, 0.98),
+            rgba(10, 11, 9, 0.98)
+        );
+
+    border: 1px solid rgba(196, 161, 84, 0.20);
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.recruitment-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(196, 161, 84, 0.50);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.40);
+}
+
+
+/* OTEVŘENO */
+
+.recruitment-status {
+    align-self: flex-start;
+
+    margin-bottom: 25px;
+    padding: 7px 10px;
+
+    background: rgba(90, 180, 110, 0.08);
+
+    border: 1px solid rgba(90, 180, 110, 0.25);
+    border-radius: 3px;
+
+    color: #78b887;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* NADPIS */
+
+.recruitment-card h3 {
+    margin: 0 0 14px;
+
+    color: #f1ede4;
+
+    font-size: 25px;
+}
+
+
+/* POPIS */
+
+.recruitment-card p {
+    margin: 0 0 30px;
+
+    color: #85867f;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* TLAČÍTKO */
+
+.recruitment-button {
+    width: 100%;
+
+    margin-top: auto;
+    padding: 14px 18px;
+
+    background: transparent;
+
+    border: 1px solid rgba(196, 161, 84, 0.40);
+    border-radius: 4px;
+
+    color: #c4a154;
+
+    font-family: inherit;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.recruitment-button:hover {
+    background: #b99a56;
+
+    border-color: #b99a56;
+
+    color: #090a08;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   NÁBOR - TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .recruitment-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   NÁBOR - MOBIL
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .recruitment-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+
+    .recruitment-card {
+        min-height: 270px;
+        padding: 25px;
+    }
+
+}
