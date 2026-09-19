@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pages = document.querySelectorAll(".page");
     const navButtons = document.querySelectorAll("[data-page]");
 
+
     function showPage(pageId) {
 
         const targetPage = document.getElementById(pageId);
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             top: 0,
             behavior: "smooth"
         });
+
     }
 
 
@@ -36,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", function () {
 
-            const pageId = button.getAttribute("data-page");
+            const pageId =
+                button.getAttribute("data-page");
 
             showPage(pageId);
 
@@ -50,8 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
        2. SLIDESHOW
     ===================================================== */
 
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".slide-dot");
+    const slides =
+        document.querySelectorAll(".slide");
+
+    const dots =
+        document.querySelectorAll(".slide-dot");
 
     let currentSlide = 0;
     let slideTimer = null;
@@ -63,9 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+
         if (index >= slides.length) {
             index = 0;
         }
+
 
         if (index < 0) {
             index = slides.length - 1;
@@ -73,12 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         slides.forEach(function (slide) {
+
             slide.classList.remove("active");
+
         });
 
 
         dots.forEach(function (dot) {
+
             dot.classList.remove("active");
+
         });
 
 
@@ -86,11 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (dots[index]) {
+
             dots[index].classList.add("active");
+
         }
 
 
         currentSlide = index;
+
     }
 
 
@@ -104,31 +119,43 @@ document.addEventListener("DOMContentLoaded", function () {
     function startSlideshow() {
 
         if (slideTimer) {
+
             clearInterval(slideTimer);
+
         }
+
 
         if (slides.length <= 1) {
+
             return;
+
         }
 
 
-        slideTimer = setInterval(function () {
+        slideTimer = setInterval(
+            function () {
 
-            nextSlide();
+                nextSlide();
 
-        }, 10000);
+            },
+            10000
+        );
+
     }
 
 
     dots.forEach(function (dot, index) {
 
-        dot.addEventListener("click", function () {
+        dot.addEventListener(
+            "click",
+            function () {
 
-            showSlide(index);
+                showSlide(index);
 
-            startSlideshow();
+                startSlideshow();
 
-        });
+            }
+        );
 
     });
 
@@ -147,76 +174,120 @@ document.addEventListener("DOMContentLoaded", function () {
        3. FAQ
     ===================================================== */
 
-    const faqItems = document.querySelectorAll(".faq-item");
+    const faqItems =
+        document.querySelectorAll(".faq-item");
 
 
     faqItems.forEach(function (item) {
 
-        const question = item.querySelector(".faq-question");
+        const question =
+            item.querySelector(".faq-question");
+
 
         if (!question) {
+
             return;
+
         }
 
 
-        question.addEventListener("click", function () {
+        question.addEventListener(
+            "click",
+            function () {
 
-            const wasOpen =
-                item.classList.contains("open");
-
-
-            faqItems.forEach(function (otherItem) {
-
-                otherItem.classList.remove("open");
-
-            });
+                const wasOpen =
+                    item.classList.contains("open");
 
 
-            if (!wasOpen) {
+                faqItems.forEach(
+                    function (otherItem) {
 
-                item.classList.add("open");
+                        otherItem.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
+
+                if (!wasOpen) {
+
+                    item.classList.add("open");
+
+                }
 
             }
-
-        });
+        );
 
     });
 
 
 
     /* =====================================================
-       4. LOGIN
+       4. POMOCNÉ FUNKCE PRO ÚČET
     ===================================================== */
 
     function formatLoginTime(storedTime) {
 
         if (!storedTime) {
+
             return "Neznámý";
+
         }
 
 
-        const date = new Date(storedTime);
+        const date =
+            new Date(storedTime);
 
 
         if (isNaN(date.getTime())) {
+
             return "Neznámý";
+
         }
 
 
-        return date.toLocaleString("cs-CZ", {
+        return date.toLocaleString(
+            "cs-CZ",
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
 
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-
-            hour: "2-digit",
-            minute: "2-digit"
-
-        });
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            }
+        );
 
     }
 
 
+
+    function logoutAccount() {
+
+        localStorage.removeItem(
+            "metwoodLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "metwoodUsername"
+        );
+
+        localStorage.removeItem(
+            "metwoodLoginTime"
+        );
+
+
+        window.location.reload();
+
+    }
+
+
+
+    /* =====================================================
+       5. PŘIHLÁŠENÝ ÚČET
+    ===================================================== */
 
     function showAccountDashboard() {
 
@@ -225,16 +296,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (!loginBox) {
+
             return;
+
         }
 
 
         const username =
-            localStorage.getItem("metwoodUsername") || "Admin";
+            localStorage.getItem(
+                "metwoodUsername"
+            ) || "Admin";
 
 
         const loginTime =
-            localStorage.getItem("metwoodLoginTime");
+            localStorage.getItem(
+                "metwoodLoginTime"
+            );
 
 
         const formattedTime =
@@ -305,190 +382,404 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const logoutButton =
-            document.getElementById("logoutButton");
+            document.getElementById(
+                "logoutButton"
+            );
 
 
         if (logoutButton) {
 
             logoutButton.addEventListener(
                 "click",
-                function () {
-
-                    logoutAccount();
-
-                }
+                logoutAccount
             );
 
         }
 
 
         const openDashboard =
-    document.getElementById("openDashboard");
+            document.getElementById(
+                "openDashboard"
+            );
 
 
-if (openDashboard) {
+        if (openDashboard) {
 
-    openDashboard.addEventListener(
-        "click",
-        function () {
-
-            showFullDashboard();
+            openDashboard.addEventListener(
+                "click",
+                showFullDashboard
+            );
 
         }
-    );
 
-}
-
-
-    function logoutAccount() {
-        
-        /* =====================================================
-   METWOOD - FULL DASHBOARD
-===================================================== */
-
-function showFullDashboard() {
-
-    const loginBox =
-        document.getElementById("loginBox");
-
-    if (!loginBox) {
-        return;
     }
 
 
-    const username =
-        localStorage.getItem("metwoodUsername") || "Admin";
 
-    const loginTime =
-        localStorage.getItem("metwoodLoginTime");
+    /* =====================================================
+       6. FULL DASHBOARD
+    ===================================================== */
 
-    const formattedTime =
-        formatLoginTime(loginTime);
+    function showFullDashboard() {
 
-
-    loginBox.innerHTML = `
-
-        <div class="account-dashboard">
-
-            <div class="account-sidebar">
-
-                <div class="dashboard-logo">
-                    M
-                </div>
-
-                <div class="dashboard-user">
-                    <small>PŘIHLÁŠEN JAKO</small>
-                    <strong>${username}</strong>
-                </div>
+        const loginBox =
+            document.getElementById("loginBox");
 
 
-                <div class="dashboard-menu">
+        if (!loginBox) {
+
+            return;
+
+        }
+
+
+        const username =
+            localStorage.getItem(
+                "metwoodUsername"
+            ) || "Admin";
+
+
+        const loginTime =
+            localStorage.getItem(
+                "metwoodLoginTime"
+            );
+
+
+        const formattedTime =
+            formatLoginTime(loginTime);
+
+
+        loginBox.innerHTML = `
+
+            <div class="account-dashboard">
+
+
+                <!-- LEVÉ MENU -->
+
+                <aside class="account-sidebar">
+
+
+                    <div class="dashboard-logo">
+                        M
+                    </div>
+
+
+                    <div class="dashboard-user">
+
+                        <small>
+                            PŘIHLÁŠEN JAKO
+                        </small>
+
+                        <strong>
+                            ${username}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="dashboard-menu">
+
+
+                        <button
+                            class="dashboard-nav active"
+                            data-account-tab="dashboard"
+                            type="button"
+                        >
+                            Dashboard
+                        </button>
+
+
+
+                        <span class="dashboard-menu-title">
+                            MŮJ ÚČET
+                        </span>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="whitelist"
+                            type="button"
+                        >
+                            Whitelist
+                        </button>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="tickets"
+                            type="button"
+                        >
+                            Tickety
+                        </button>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="character"
+                            type="button"
+                        >
+                            Moje postava
+                        </button>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="profile"
+                            type="button"
+                        >
+                            Profil
+                        </button>
+
+
+
+                        <span class="dashboard-menu-title">
+                            ADMINISTRACE
+                        </span>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="staff"
+                            type="button"
+                        >
+                            Staff Panel
+                        </button>
+
+
+
+                        <button
+                            class="dashboard-nav"
+                            data-account-tab="game-data"
+                            type="button"
+                        >
+                            Herní data
+                        </button>
+
+
+                    </div>
+
+
 
                     <button
-                        class="dashboard-nav active"
-                        data-account-tab="dashboard"
+                        id="dashboardLogout"
+                        class="dashboard-logout account-logout"
+                        type="button"
                     >
-                        Dashboard
+                        ODHLÁSIT SE
                     </button>
 
 
-                    <span class="dashboard-menu-title">
-                        MŮJ ÚČET
-                    </span>
+                </aside>
 
 
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="whitelist"
+
+                <!-- PRAVÝ OBSAH -->
+
+                <div class="dashboard-content">
+
+
+
+                    <!-- DASHBOARD -->
+
+                    <div
+                        class="dashboard-view active"
+                        data-account-view="dashboard"
                     >
-                        Whitelist
-                    </button>
 
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="tickets"
-                    >
-                        Tickety
-                    </button>
-
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="character"
-                    >
-                        Moje postava
-                    </button>
-
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="profile"
-                    >
-                        Profil
-                    </button>
+                        <span class="section-label">
+                            METWOOD ACCOUNT
+                        </span>
 
 
-                    <span class="dashboard-menu-title">
-                        ADMINISTRACE
-                    </span>
+                        <h2>
+                            Vítej zpět, ${username}.
+                        </h2>
 
 
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="staff"
-                    >
-                        Staff Panel
-                    </button>
-
-                    <button
-                        class="dashboard-nav"
-                        data-account-tab="game-data"
-                    >
-                        Herní data
-                    </button>
-
-                </div>
+                        <p>
+                            Přehled tvého MetWood účtu.
+                        </p>
 
 
-                <button
-                    id="dashboardLogout"
-                    class="dashboard-logout"
-                    type="button"
-                >
-                    ODHLÁSIT SE
-                </button>
 
-            </div>
+                        <div class="dashboard-cards">
 
 
-            <div class="dashboard-content">
+                            <div class="dashboard-card">
+
+                                <small>
+                                    UŽIVATELSKÉ JMÉNO
+                                </small>
+
+                                <strong>
+                                    ${username}
+                                </strong>
+
+                            </div>
 
 
-                <!-- DASHBOARD -->
 
-                <div
-                    class="dashboard-view active"
-                    data-account-view="dashboard"
-                >
+                            <div class="dashboard-card">
 
-                    <span class="section-label">
-                        METWOOD ACCOUNT
-                    </span>
+                                <small>
+                                    ROLE
+                                </small>
 
-                    <h2>
-                        Vítej zpět, ${username}.
-                    </h2>
+                                <strong>
+                                    Administrator
+                                </strong>
 
-                    <p>
-                        Přehled tvého MetWood účtu.
-                    </p>
+                            </div>
 
 
-                    <div class="dashboard-cards">
 
-                        <div class="dashboard-card">
+                            <div class="dashboard-card">
+
+                                <small>
+                                    WHITELIST
+                                </small>
+
+                                <strong class="status-green">
+                                    SCHVÁLEN
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="dashboard-card">
+
+                                <small>
+                                    STAV ÚČTU
+                                </small>
+
+                                <strong class="status-green">
+                                    BEZ BANU
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="dashboard-info">
 
                             <small>
-                                UŽIVATELSKÉ JMÉNO
+                                POSLEDNÍ PŘIHLÁŠENÍ
                             </small>
+
+                            <strong>
+                                ${formattedTime}
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- WHITELIST -->
+
+                    <div
+                        class="dashboard-view"
+                        data-account-view="whitelist"
+                    >
+
+                        <span class="section-label">
+                            MŮJ ÚČET
+                        </span>
+
+                        <h2>
+                            Whitelist
+                        </h2>
+
+                        <p>
+                            Informace o whitelistu se zde
+                            zobrazí později.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- TICKETY -->
+
+                    <div
+                        class="dashboard-view"
+                        data-account-view="tickets"
+                    >
+
+                        <span class="section-label">
+                            MŮJ ÚČET
+                        </span>
+
+                        <h2>
+                            Tickety
+                        </h2>
+
+                        <p>
+                            Zatím nemáš žádné otevřené tickety.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- POSTAVA -->
+
+                    <div
+                        class="dashboard-view"
+                        data-account-view="character"
+                    >
+
+                        <span class="section-label">
+                            MŮJ ÚČET
+                        </span>
+
+                        <h2>
+                            Moje postava
+                        </h2>
+
+                        <p>
+                            Herní postava bude později
+                            propojena s MetWood serverem.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- PROFIL -->
+
+                    <div
+                        class="dashboard-view"
+                        data-account-view="profile"
+                    >
+
+                        <span class="section-label">
+                            MŮJ ÚČET
+                        </span>
+
+                        <h2>
+                            Profil
+                        </h2>
+
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                Uživatelské jméno
+                            </span>
 
                             <strong>
                                 ${username}
@@ -497,11 +788,12 @@ function showFullDashboard() {
                         </div>
 
 
-                        <div class="dashboard-card">
 
-                            <small>
-                                ROLE
-                            </small>
+                        <div class="profile-row">
+
+                            <span>
+                                Role
+                            </span>
 
                             <strong>
                                 Administrator
@@ -510,315 +802,224 @@ function showFullDashboard() {
                         </div>
 
 
-                        <div class="dashboard-card">
 
-                            <small>
-                                WHITELIST
-                            </small>
+                        <div class="profile-row">
+
+                            <span>
+                                Whitelist
+                            </span>
 
                             <strong class="status-green">
-                                SCHVÁLEN
+                                Schválen
                             </strong>
 
                         </div>
 
 
-                        <div class="dashboard-card">
 
-                            <small>
-                                STAV ÚČTU
-                            </small>
+                        <div class="profile-row">
+
+                            <span>
+                                Ban
+                            </span>
 
                             <strong class="status-green">
-                                BEZ BANU
+                                Bez banu
                             </strong>
 
                         </div>
 
+
+
+                        <div class="profile-row">
+
+                            <span>
+                                Poslední přihlášení
+                            </span>
+
+                            <strong>
+                                ${formattedTime}
+                            </strong>
+
+                        </div>
+
+
                     </div>
 
 
-                    <div class="dashboard-info">
 
-                        <small>
-                            POSLEDNÍ PŘIHLÁŠENÍ
-                        </small>
+                    <!-- STAFF PANEL -->
 
-                        <strong>
-                            ${formattedTime}
-                        </strong>
+                    <div
+                        class="dashboard-view"
+                        data-account-view="staff"
+                    >
+
+                        <span class="section-label">
+                            ADMINISTRACE
+                        </span>
+
+                        <h2>
+                            Staff Panel
+                        </h2>
+
+                        <p>
+                            Administrace MetWood bude
+                            doplněna později.
+                        </p>
 
                     </div>
 
-                </div>
 
 
+                    <!-- HERNÍ DATA -->
 
-                <!-- WHITELIST -->
+                    <div
+                        class="dashboard-view"
+                        data-account-view="game-data"
+                    >
 
-                <div
-                    class="dashboard-view"
-                    data-account-view="whitelist"
-                >
+                        <span class="section-label">
+                            ADMINISTRACE
+                        </span>
 
-                    <span class="section-label">
-                        MŮJ ÚČET
-                    </span>
+                        <h2>
+                            Herní data
+                        </h2>
 
-                    <h2>Whitelist</h2>
+                        <p>
+                            Zde budou později informace
+                            z herního serveru a databáze.
+                        </p>
 
-                    <p>
-                        Informace o whitelistu se zde zobrazí později.
-                    </p>
-
-                </div>
-
-
-
-                <!-- TICKETY -->
-
-                <div
-                    class="dashboard-view"
-                    data-account-view="tickets"
-                >
-
-                    <span class="section-label">
-                        MŮJ ÚČET
-                    </span>
-
-                    <h2>Tickety</h2>
-
-                    <p>
-                        Zatím nemáš žádné otevřené tickety.
-                    </p>
-
-                </div>
-
-
-
-                <!-- POSTAVA -->
-
-                <div
-                    class="dashboard-view"
-                    data-account-view="character"
-                >
-
-                    <span class="section-label">
-                        MŮJ ÚČET
-                    </span>
-
-                    <h2>Moje postava</h2>
-
-                    <p>
-                        Herní postava bude později propojena
-                        s MetWood serverem.
-                    </p>
-
-                </div>
-
-
-
-                <!-- PROFIL -->
-
-                <div
-                    class="dashboard-view"
-                    data-account-view="profile"
-                >
-
-                    <span class="section-label">
-                        MŮJ ÚČET
-                    </span>
-
-                    <h2>Profil</h2>
-
-
-                    <div class="profile-row">
-                        <span>Uživatelské jméno</span>
-                        <strong>${username}</strong>
                     </div>
 
-                    <div class="profile-row">
-                        <span>Role</span>
-                        <strong>Administrator</strong>
-                    </div>
-
-                    <div class="profile-row">
-                        <span>Whitelist</span>
-                        <strong class="status-green">
-                            Schválen
-                        </strong>
-                    </div>
-
-                    <div class="profile-row">
-                        <span>Ban</span>
-                        <strong class="status-green">
-                            Bez banu
-                        </strong>
-                    </div>
-
-                    <div class="profile-row">
-                        <span>Poslední přihlášení</span>
-                        <strong>${formattedTime}</strong>
-                    </div>
-
-                </div>
-
-
-
-                <!-- STAFF -->
-
-                <div
-                    class="dashboard-view"
-                    data-account-view="staff"
-                >
-
-                    <span class="section-label">
-                        ADMINISTRACE
-                    </span>
-
-                    <h2>Staff Panel</h2>
-
-                    <p>
-                        Administrace MetWood bude doplněna později.
-                    </p>
-
-                </div>
-
-
-
-                <!-- HERNÍ DATA -->
-
-                <div
-                    class="dashboard-view"
-                    data-account-view="game-data"
-                >
-
-                    <span class="section-label">
-                        ADMINISTRACE
-                    </span>
-
-                    <h2>Herní data</h2>
-
-                    <p>
-                        Zde budou později informace
-                        z herního serveru a databáze.
-                    </p>
 
                 </div>
 
 
             </div>
 
-        </div>
-
-    `;
+        `;
 
 
-    /* =========================================
-       MENU DASHBOARDU
-    ========================================= */
 
-    const dashboardButtons =
-        document.querySelectorAll(".dashboard-nav");
-
-    const dashboardViews =
-        document.querySelectorAll(".dashboard-view");
+        /* =================================================
+           PŘEPÍNÁNÍ POLOŽEK DASHBOARDU
+        ================================================= */
 
 
-    dashboardButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const target =
-                    button.getAttribute(
-                        "data-account-tab"
-                    );
+        const dashboardButtons =
+            loginBox.querySelectorAll(
+                ".dashboard-nav"
+            );
 
 
-                dashboardButtons.forEach(
-                    function (otherButton) {
+        const dashboardViews =
+            loginBox.querySelectorAll(
+                ".dashboard-view"
+            );
 
-                        otherButton.classList.remove(
+
+
+        dashboardButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const target =
+                            button.getAttribute(
+                                "data-account-tab"
+                            );
+
+
+
+                        dashboardButtons.forEach(
+                            function (otherButton) {
+
+                                otherButton.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+
+                        dashboardViews.forEach(
+                            function (view) {
+
+                                view.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+
+                        button.classList.add(
                             "active"
                         );
 
+
+
+                        const targetView =
+                            loginBox.querySelector(
+                                '[data-account-view="' +
+                                target +
+                                '"]'
+                            );
+
+
+
+                        if (targetView) {
+
+                            targetView.classList.add(
+                                "active"
+                            );
+
+                        }
+
+
                     }
                 );
-
-
-                dashboardViews.forEach(
-                    function (view) {
-
-                        view.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                button.classList.add("active");
-
-
-                const targetView =
-                    document.querySelector(
-                        '[data-account-view="' +
-                        target +
-                        '"]'
-                    );
-
-
-                if (targetView) {
-
-                    targetView.classList.add(
-                        "active"
-                    );
-
-                }
 
             }
         );
 
-    });
 
 
-    const dashboardLogout =
-        document.getElementById(
-            "dashboardLogout"
-        );
+        /* =================================================
+           ODHLÁŠENÍ Z DASHBOARDU
+        ================================================= */
 
 
-    if (dashboardLogout) {
-
-        dashboardLogout.addEventListener(
-            "click",
-            logoutAccount
-        );
-
-    }
-
-}
-
-        localStorage.removeItem(
-            "metwoodLoggedIn"
-        );
-
-        localStorage.removeItem(
-            "metwoodUsername"
-        );
-
-        localStorage.removeItem(
-            "metwoodLoginTime"
-        );
+        const dashboardLogout =
+            document.getElementById(
+                "dashboardLogout"
+            );
 
 
-        window.location.reload();
+        if (dashboardLogout) {
+
+            dashboardLogout.addEventListener(
+                "click",
+                logoutAccount
+            );
+
+        }
 
     }
 
 
+
+    /* =====================================================
+       7. LOGIN FORM
+    ===================================================== */
 
     const loginForm =
         document.getElementById("loginForm");
@@ -830,17 +1031,28 @@ function showFullDashboard() {
             "submit",
             function (event) {
 
+
                 event.preventDefault();
 
 
+
                 const usernameInput =
-                    document.getElementById("username");
+                    document.getElementById(
+                        "username"
+                    );
+
 
                 const passwordInput =
-                    document.getElementById("password");
+                    document.getElementById(
+                        "password"
+                    );
+
 
                 const loginError =
-                    document.getElementById("loginError");
+                    document.getElementById(
+                        "loginError"
+                    );
+
 
 
                 if (
@@ -853,14 +1065,18 @@ function showFullDashboard() {
                     );
 
                     return;
+
                 }
+
 
 
                 const username =
                     usernameInput.value.trim();
 
+
                 const password =
                     passwordInput.value;
+
 
 
                 /* =========================================
@@ -870,7 +1086,7 @@ function showFullDashboard() {
                    Password: Admin
 
                    POZOR:
-                   Toto není skutečné zabezpečení.
+                   Toto je pouze frontend demo.
                 ========================================= */
 
 
@@ -879,8 +1095,10 @@ function showFullDashboard() {
                     password === "Admin"
                 ) {
 
+
                     const loginTime =
                         new Date().toISOString();
+
 
 
                     localStorage.setItem(
@@ -901,6 +1119,7 @@ function showFullDashboard() {
                     );
 
 
+
                     if (loginError) {
 
                         loginError.classList.remove(
@@ -910,11 +1129,12 @@ function showFullDashboard() {
                     }
 
 
+
                     showAccountDashboard();
 
-                }
 
-                else {
+                } else {
+
 
                     if (loginError) {
 
@@ -924,7 +1144,9 @@ function showFullDashboard() {
 
                     }
 
+
                 }
+
 
             }
         );
@@ -934,15 +1156,19 @@ function showFullDashboard() {
 
 
     /* =====================================================
-       5. OBNOVENÍ LOGINU
+       8. OBNOVENÍ PŘIHLÁŠENÍ PO F5
     ===================================================== */
 
+
     if (
-        localStorage.getItem("metwoodLoggedIn") === "true"
+        localStorage.getItem(
+            "metwoodLoggedIn"
+        ) === "true"
     ) {
 
         showAccountDashboard();
 
     }
+
 
 });
