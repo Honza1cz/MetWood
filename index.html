@@ -25,10 +25,13 @@
         <button class="nav-button" data-page="store">OBCHOD</button>
         <button class="nav-button" data-page="status">STATUS</button>
         <button class="nav-button" data-page="team">TÝM</button>
+
+        <!-- NOVÉ -->
+        <button class="nav-button" data-page="recruitment">NÁBOR</button>
     </nav>
 
     <button class="panel-button nav-button" data-page="panel">
-        PANEL
+        ÚČET
     </button>
 
 </header>
@@ -700,38 +703,93 @@
 
 
 
+
 <!-- =====================================================
-     PANEL
+     ÚČET / LOGIN
 ===================================================== -->
 
 <section id="panel" class="page sub-page">
 
-    <div class="content-window">
+    <div class="content-window account-login-window">
 
         <span class="section-label">
             METWOOD ACCOUNT
         </span>
 
-        <h2>Hráčský panel</h2>
+        <h2>Přihlášení</h2>
 
         <p class="section-description">
-            Později zde bude přihlášení přes Discord
-            a propojení s herním účtem MetWood.
+            Přihlas se do svého MetWood účtu.
         </p>
 
-        <div class="coming-soon">
-            PANEL SE PŘIPRAVUJE
+
+        <div id="loginBox" class="login-box">
+
+            <div class="login-logo">
+                M
+            </div>
+
+            <h3>Vítej zpět</h3>
+
+            <p>
+                Pro pokračování se přihlas.
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="username">
+                        UŽIVATELSKÉ JMÉNO
+                    </label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        placeholder="Username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        HESLO
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="••••••••"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <p id="loginError" class="login-error">
+                    Nesprávné uživatelské jméno nebo heslo.
+                </p>
+
+
+                <button type="submit" class="login-button">
+                    PŘIHLÁSIT SE
+                </button>
+
+            </form>
+
+
+            <span class="login-note">
+                METWOOD • ADMINISTRATION
+            </span>
+
         </div>
 
     </div>
 
 </section>
-
-
-</main>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
