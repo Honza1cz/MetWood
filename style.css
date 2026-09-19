@@ -3200,3 +3200,94 @@ a {
     }
 
 }
+
+/* =========================================
+   KOMUNITA - DÝNĚ / FIRE ANIMACE
+========================================= */
+
+.pumpkin-hover {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* OBA OBRÁZKY */
+
+.pumpkin-hover img {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+/* NORMÁLNÍ DÝNĚ */
+
+.pumpkin-normal {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+/* HOŘÍCÍ GIF JE NORMÁLNĚ SCHOVANÝ */
+
+.pumpkin-burning {
+    opacity: 0;
+    z-index: 3;
+}
+
+
+/* PO NAJETÍ SCHOVÁ NORMÁLNÍ DÝNI */
+
+.pumpkin-hover:hover .pumpkin-normal {
+    opacity: 0;
+}
+
+
+/* PO NAJETÍ UKÁŽE HOŘÍCÍ GIF */
+
+.pumpkin-hover:hover .pumpkin-burning {
+    opacity: 1;
+    transform: scale(1.12);
+
+    filter:
+        brightness(1.15)
+        drop-shadow(0 0 6px rgba(255, 170, 40, 0.95))
+        drop-shadow(0 0 14px rgba(255, 110, 0, 0.8))
+        drop-shadow(0 0 25px rgba(255, 70, 0, 0.55));
+
+    animation: pumpkinFireGlow 0.65s ease-in-out infinite alternate;
+}
+
+
+/* POHYB ZÁŘE */
+
+@keyframes pumpkinFireGlow {
+
+    0% {
+        filter:
+            brightness(1.05)
+            drop-shadow(0 0 5px rgba(255, 180, 50, 0.8))
+            drop-shadow(0 0 12px rgba(255, 100, 0, 0.6));
+    }
+
+    100% {
+        filter:
+            brightness(1.25)
+            drop-shadow(0 0 9px rgba(255, 190, 60, 1))
+            drop-shadow(0 0 22px rgba(255, 100, 0, 0.9))
+            drop-shadow(0 0 35px rgba(255, 60, 0, 0.5));
+    }
+
+}
