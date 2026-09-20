@@ -3395,3 +3395,18 @@ a {
     }
 
 }
+.features-section,
+.features-bar,
+.feature-small,
+.community-feature {
+    overflow: visible !important;
+}
+
+.features-section {
+    position: relative;
+    z-index: 10;
+}
+
+.community-feature {
+    position: relative;
+}
